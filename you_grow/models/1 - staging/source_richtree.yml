@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: richtree
+    database: raw
+
+    tables:
+      - name: customer_data
+      - name: order_data
+      - name: order_line_data
+      - name: product_data
+      - name: vendor_data
