@@ -3,8 +3,9 @@ Case Study: Super.com
 ### Assumptions/Notes
 For exercise:
 - Beth is able to sell in multiple countries, making the country dimension relevant
+  
 Overall:
-- did not complete `schema.ymls` as codegen package would be used to save time in true set-up
+- Did not complete `schema.ymls` as codegen package would be used to save time in true set-up
 
 ### Question 1
 See this dbt project.
@@ -31,6 +32,6 @@ I assume the subscriptions data would come in as a separate raw table.
 
 
 ### Recommended Next Steps:
-- build dbt model(s) to specifically serve BI
+- build dbt model(s) to specifically serve chosen BI tools (Tableau, etc.)
 - build out subscription marts to track monthly recurring revenue
-- recommend connceting with supplier to understand shipping time to establish service level and order aging KPIs
+- recommend project for connecting to supplier order workflow data to understand order processing time to establish service level and order aging KPIs
