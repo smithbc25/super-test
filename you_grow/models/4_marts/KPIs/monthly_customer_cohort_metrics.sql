@@ -1,41 +1,43 @@
 with order_lines as (
     select *
     from {{ ref('order_lines') }}
+    where is_refunded = false
 ),
 
-customer_details as (
+customers as (
     select *
-    from {{ ref('customer_details') }}
+    from {{ ref('customers') }}
 ),
 
 cohort_monthly_metrics as (
     select
-        customer_details.cohort,
-        customer_details.gender,
-        customer_details.state,
-        customer_details.country,
-        round(customer_details.first_order_value, -1)
+--dimensions
+        customers.cohort,
+        customers.country,
+        customers.gender,
+        customers.state,
+        round(customers.first_order_value, -1)
             as first_order_value_bucket,
-        round(customer_details.first_order_basket_size, -1)
+        round(customers.first_order_basket_size, -1)
             as first_order_basket_size_bucket,
         date_trunc('month', order_lines.order_created_at) as fiscal_month,
+--metrics
         count(distinct order_lines.customer_id)
             over (
                 partition by
-                    customer_details.cohort,
-                    customer_details.gender,
-                    customer_details.state,
-                    customer_details.country,
+                    customers.cohort,
+                    customers.gender,
+                    customers.state,
+                    customers.country,
                     first_order_value_bucket,
                     first_order_basket_size_bucket
             )
             as cohort_size,
-        count(distinct order_lines.customer_id)
-        / cohort_size as customer_retention_rate,
+        count(distinct order_lines.customer_id) as active_customers,
         sum(order_lines.line_revenue) as gross_merchandise_value
     from order_lines
-    left join customer_details
-        on order_lines.customer_id = customer_details.customer_id
+    left join customers
+        on order_lines.customer_id = customers.customer_id
     group by 1, 2, 3, 4, 5, 6, 7
 )
 

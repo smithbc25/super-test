@@ -1,0 +1,36 @@
+sources:
+  - name: richtree
+    database: raw
+    schema: richtree_google_sheet_import
+    description: data sourced from YouGrow online store 
+    tables:
+      - name: customer_data
+        tests:
+          - dbt_expectations.expect_table_column_count_to_equal:
+              value: 7
+              config:
+                severity: warn
+      - name: order_data
+        tests:
+          - dbt_expectations.expect_table_column_count_to_equal:
+              value: 6
+              config:
+                severity: warn
+      - name: order_line_data
+        tests:
+          - dbt_expectations.expect_table_column_count_to_equal:
+              value: 5
+              config:
+                severity: warn
+      - name: product_data
+        tests:
+          - dbt_expectations.expect_table_column_count_to_equal:
+              value: 7
+              config:
+                severity: warn
+      - name: vendor_data
+        tests:
+          - dbt_expectations.expect_table_column_count_to_equal:
+              value: 3
+              config:
+                severity: warn

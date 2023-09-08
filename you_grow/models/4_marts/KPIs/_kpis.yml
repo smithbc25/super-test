@@ -1,0 +1,17 @@
+models:
+  - name: monthly_customer_cohort_metrics
+    description: Fully segmented cohort metrics by fiscal month. Can be aggregated to necessary level of detail. REMOVES REFUNDED ORDERS.
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - cohort
+            - fiscal_month
+            - gender
+            - state
+            - country
+            - first_order_value_bucket
+            - first_order_basket_size_bucket
+#columns and tests would follow  
+  - name: monthly_top_metrics
+    description: Aggregated business KPIs per fiscal month. REMOVES REFUNDED ORDERS.
+#columns and tests would follow    

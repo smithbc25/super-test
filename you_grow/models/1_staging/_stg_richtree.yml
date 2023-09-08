@@ -1,0 +1,35 @@
+models:
+  - name: stg_richtree__customers
+    description: stage of richtree customer data
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+      - name: email
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_richtree__lines
+    description: stage of richtree order line data
+    columns:
+      - name: line_item_id
+        tests:
+          - unique
+          - not_null
+      - name: order_id
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+
+  - name: stg_richtree__orders
+    description: stage of richtree order data
+#columns and tests continued
+  - name: stg_richtree__products
+    description: stage of richtree product data
+
+  - name: stg_richtree__vendors
+    description: stage of richtree vendor data

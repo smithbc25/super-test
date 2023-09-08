@@ -1,0 +1,7 @@
+models:
+  - name: int_richtree__customer__first_order_cohort
+    description: Establishes cohort and other first order attributes for a customer. REMOVES REFUNDED ORDERS
+#columns and tests would follow
+  - name: int_richtree__customer__lifetime
+    description: Computes lifetime metrics for a customer. REMOVES REFUNDED ORDERS
+#columns and tests would follow

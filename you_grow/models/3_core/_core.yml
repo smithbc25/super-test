@@ -1,0 +1,10 @@
+models:
+  - name: customers
+    description: core customer mart, with base customer attributes, customer focused business metrics and derived attributes
+#columns and tests would follow
+  - name: order_lines
+    description: core transaction mart, with line item information including order and product details
+#columns and tests would follow
+  - name: vendors
+    description: basic vendor dimension table, will evolve as business needs require.
+#columns and tests would follow
